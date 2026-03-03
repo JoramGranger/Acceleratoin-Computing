@@ -54,13 +54,13 @@ dnf makecache
 dnf module list nvidia-driver   # Run this to see actual available streams/modules
 ```
 
-#### 4.2.a Look for something like: nvidia-driver open-dkms [d] or nvidia-driver:latest-open etc.
+#### 4.2 Look for something like: nvidia-driver open-dkms [d] or nvidia-driver:latest-open etc.
 #### If you see open-dkms or similar, enable it:
 ```
 dnf module enable -y nvidia-driver:open-dkms
 ```
 
-#### 4.2.b OR if it's listed as open (no -dkms suffix):
+##### OR if it's listed as open (no -dkms suffix):
 ```
 dnf module enable -y nvidia-driver:open
 ```
