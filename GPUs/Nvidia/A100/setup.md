@@ -7,7 +7,7 @@ dnf install -y epel-release
 dnf install -y kernel-devel-$(uname -r) kernel-headers-$(uname -r) gcc make dkms acpid
 ```
 
-### 2. Blacklist nouveau (do this now — critical)
+### 2. Blacklist nouveau
 ```
 cat <<EOF > /etc/modprobe.d/blacklist-nouveau.conf
 blacklist nouveau
@@ -22,7 +22,9 @@ dracut --force --regenerate-all
 sed -i 's/GRUB_CMDLINE_LINUX="/GRUB_CMDLINE_LINUX="nomodeset rd.driver.blacklist=nouveau /' /etc/default/grub
 grub2-mkconfig -o /boot/grub2/grub.cfg   # or /boot/efi/... if EFI boot
 
-reboot
+#reboot
+reboot +0
+
 # After reboot, verify:
 lsmod | grep nouveau   # must be empty
 ```
